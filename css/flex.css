@@ -2,6 +2,8 @@
 
 /* Photo Gallery 메인 CSS - main.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 html,
 body {
     margin: 0;
@@ -12,17 +14,66 @@ body {
 }
 
 body {
-    background-color: #000;
+    /*background-color: #000;*/
     /*overflow: hidden;*/
 }
 
 /*갤러리타이틀*/
+.top {
+    position: relative;
+    width: 980px;
+    max-width: 100%;
+    height: 14vh;
+    margin: 0 auto;
+    font: normal 2.8rem 'Nanum Gothic', sans-serif;
+    /* overflow: hidden; */
+}
+
 .tit {
-    font: bold 9vmin arial;
-    /*font: bold 3.2rem arial;*/
-    color: #fff;
+    position: relative;
+    top: 42%;
+    font-size: 2.5rem;
+    font-weight: normal;
     text-align: center;
-    margin-top: 100px;
+    color: #222;
+    /* margin-top: 100px; */
+    /*            outline: 1px solid red;*/
+}
+
+
+/*링크이동*/
+.link {
+    position: absolute;
+    top: 0;
+    font: normal 1.2rem 'Nanum Gothic', sans-serif;
+    text-decoration: none;
+    color: #222;
+    /* line-height: 35px; */
+}
+
+.lps {
+    left: 0;
+}
+
+.rps {
+    right: 0;
+}
+
+/*포토수*/
+.pinfo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -35px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.pinfo i {
+    font-style: normal;
+    color: red;
 }
 
 /*갤러리박스*/
@@ -31,24 +82,36 @@ body {
     width: 950px;
     max-width: 100%;
     margin: 50px auto;
-    outline: 1px solid lime;
+    /*outline: 1px solid lime;*/
+}
+
+/*갤러리 트랙*/
+.track {
+    flex: 1;
 }
 
 /*이미지박스*/
 .photobox {
     position: relative;
     /*부모자격*/
-    width: 180px;
-    height: 250px;
+    width: 94%;
+    /*한 트랙을 꽉채움*/
+    /*높이값은 자식요소 이미지가 만들어줌!*/
     cursor: pointer;
-    margin: 5px;
+    margin: 3%;
     overflow: hidden;
     /*넘치는 자식요소 숨김*/
 }
 
 .photobox img {
     width: 100%;
-    height: 100%;
+    /*height설정은 없이 자동으로!*/
+    transition: all .4s ease-out;
+}
+
+/*포토박스 마우스 오버시 이미지 살짝커짐*/
+.photobox:hover img {
+    transform: scale(1.02);
 }
 
 /*커버*/
@@ -65,11 +128,10 @@ body {
 /*설명박스*/
 .txt {
     position: absolute;
-    top: 100%;
-    /*70%로 올라옴*/
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 30%;
+    height: 80px;
     color: #fff;
     font: 0.68rem/4.68rem "맑은 고딕", "굴림";
     /* 글자크기변환: 11px/16px=0.68
@@ -161,6 +223,7 @@ body {
     height: 70vmin;
     /*보이는 화면 가로와 세로 중 작은 크기의 70% - vmin*/
     display: none;
+    text-align: center;/*이미지중앙*/
 }
 
 /*큰 이미지*/
@@ -173,20 +236,8 @@ body {
 /*미디어쿼리 - 모바일*/
 @media only screen and (max-width:500px) {
 
-    /*갤러리박스*/
-    #gallery {
-        flex-wrap: wrap;
-        /*flex줄바꿈*/
-        justify-content: space-between;
-        /*사이간격일정하게*/
-    }
 
-    /*이미지박스*/
-    .photobox {
-        width: 49%;/*한줄에 2개*/
-        margin: 0;
-        margin-bottom: 2%;/*아래줄 간격 마진으로*/
-    }
+   
 
     /*큰 이미지 이동버튼 크기변경*/
     .abtn {
